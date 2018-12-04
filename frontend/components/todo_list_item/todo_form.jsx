@@ -7,6 +7,7 @@ class TodoForm extends React.Component {
     this.state = {title: '', body: ''};
     // this.updateInput = this.updateInput.bind(this);
     this.handleSubmitTodo = this.handleSubmitTodo.bind(this);
+    this.props.receiveTodo.bind(this)
   }
 
  
@@ -28,6 +29,7 @@ class TodoForm extends React.Component {
 
   handleSubmitTodo(e) {
     e.preventDefault();
+    // debugger;
     const todo = Object.assign({}, this.state, { id: this.uniqueId() });
     this.props.receiveTodo(todo);
     this.setState({
@@ -47,7 +49,7 @@ class TodoForm extends React.Component {
           Body
           <input ref="body" onChange={this.updateInput('body')} value={this.state.body} type="text"/>
         </label>
-        <input onClick={this.handleSubmitTodo}  type="submit"/>
+        <input type="submit"/>
       </form>
     );
   }
