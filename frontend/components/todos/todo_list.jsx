@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoListItem from '../todo_list_item/todo_list_item';
 import TodoForm from '../todo_list_item/todo_form';
+// import { receiveTodo } from '../../actions/todo_actions';
 
 export default (props) => {
   console.log(props);
@@ -14,7 +15,7 @@ export default (props) => {
         }
       </ul>
       <div>
-        <TodoForm />
+        <TodoForm receiveTodo={props.receiveTodo}/>
       </div>
     </div>
 )}
