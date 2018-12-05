@@ -7,7 +7,7 @@ class TodoForm extends React.Component {
     this.state = {title: '', body: ''};
     // this.updateInput = this.updateInput.bind(this);
     this.handleSubmitTodo = this.handleSubmitTodo.bind(this);
-    this.props.receiveTodo.bind(this)
+    this.props.createTodo.bind(this)
   }
 
  
@@ -29,28 +29,31 @@ class TodoForm extends React.Component {
 
   handleSubmitTodo(e) {
     e.preventDefault();
-    // debugger;
-    const todo = Object.assign({}, this.state, { id: this.uniqueId() });
-    this.props.receiveTodo(todo);
-    this.setState({
-      title: "",
-      body: ""
-    });
+    const todo = Object.assign({}, this.state, { id: this.uniqueId(), done: false });
+    console.log(this.props.createTodo);
+    this.props.createTodo(todo).then(() => this.setState({title: "", body: ""}));
   }
 
   render() {
+
+    // debugger
     return(
-      <form onSubmit={this.handleSubmitTodo} >
-        <label>
-          Title
-          <input ref="title" onChange={this.updateInput('title')}  value={this.state.title} type="text"/>
-        </label>
-        <label>
-          Body
-          <input ref="body" onChange={this.updateInput('body')} value={this.state.body} type="text"/>
-        </label>
-        <input type="submit"/>
-      </form>
+      <div>
+        <form onSubmit={this.handleSubmitTodo} >
+          <label>
+            Title
+            <input ref="title" onChange={this.updateInput('title')}  value={this.state.title} type="text"/>
+          </label>
+          <label>
+            Body
+            <input ref="body" onChange={this.updateInput('body')} value={this.state.body} type="text"/>
+          </label>
+      
+          <input type="submit"/>
+        </form>
+        <h2 class='errors'>{this.props.errors}</h2>
+      </div>
+
     );
   }
 
