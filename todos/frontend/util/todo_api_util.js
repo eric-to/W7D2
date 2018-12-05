@@ -12,3 +12,10 @@ export const createTodo = (todo) => {
     data: todo
   })
 };
+
+export const removeTodo = (todo) => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `api/todos/${todo.id}`
+  })
+}

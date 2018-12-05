@@ -51,7 +51,7 @@ class TodoForm extends React.Component {
       
           <input type="submit"/>
         </form>
-        <h2 class='errors'>{this.props.errors}</h2>
+        <h2 className='errors'>{this.props.errors}</h2>
       </div>
 
     );

@@ -27,6 +27,10 @@ export const createTodo = (todo) => (dispatch, getState) => {
 }
 
 // Phase 5 ):
+export const removeTodo = (todo) => ({
+  type: 'REMOVE_TODO',
+  todo: todo
+});
 
 window.receiveTodos = receiveTodos;
 window.receiveTodo = receiveTodo;

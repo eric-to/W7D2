@@ -1,6 +1,7 @@
 import { RECEIVE_TODOS, RECEIVE_TODO } from "../actions/todo_actions";
 
 const todosReducer = (state = initialState, action) => {
+  Object.freeze(state);
   switch (action.type) {
     case RECEIVE_TODOS:
       let newTodos = {};
@@ -10,6 +11,11 @@ const todosReducer = (state = initialState, action) => {
       let newTodo = {};
       newTodo[action.todo.id] = action.todo;
       return Object.assign({}, state, newTodo);
+    case 'REMOVE_TODO':
+      let newState = Object.assign({}, state)
+      // console.log(`THUNKKKKKKKKKKKKKKKKKKK${action.type}`)
+      delete newState[action.todo.id];
+      return newState;
     default:
       return state;
   }
